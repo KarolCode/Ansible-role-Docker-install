@@ -1,0 +1,13 @@
+---
+
+- name: Role test Docker Install.
+  hosts: localhost
+  connection: local
+  become: yes
+  tasks:
+
+    - name: Install Docker
+      import_role:
+        name: docker_install
+      tags:
+        - docker_install

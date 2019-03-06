@@ -1,0 +1,9 @@
+---
+
+- include: include/init.yml
+
+- name: Ensure Docker is restarted.
+  service:
+    name: "{{ demon_name }}"
+    state: restarted
+

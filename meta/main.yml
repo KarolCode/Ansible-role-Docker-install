@@ -1,0 +1,26 @@
+---
+
+galaxy_info:
+  role_name: docker_install
+  author: Karol Kaliszczak
+  description: The role responsible for installing the Docker daemon.
+  license: MIT
+  min_ansible_version: 2.5
+  github_branch: master
+
+  platforms:
+   - name: Ubuntu
+     versions:
+     - all
+
+   - name: Debian
+     versions:
+     - all
+
+   - name: CentOS
+     versions:
+       - all
+
+  galaxy_tags: []
+
+dependencies: []

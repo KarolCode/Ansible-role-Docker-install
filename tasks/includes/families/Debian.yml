@@ -1,0 +1,27 @@
+---
+
+- name: Install required packet
+  become: yes
+  apt:
+    state: latest
+    update_cache: yes
+    cache_valid_time: "{{ apt_cache_valid_time }}"
+    pkg:
+      - curl
+      - apt-transport-https
+      - ca-certificates
+      - software-properties-common
+
+- name: Add Docker apt key.
+  become: yes
+  apt_key:
+    url: "{{ docker_install_package_docker_key_url }}"
+    id: "{{ docker_install_package_docker_key_id }}"
+    state: present
+
+- name: Add Docker repository.
+  become: yes
+  apt_repository:
+    repo: "{{ docker_apt_repository }}"
+    state: present
+    update_cache: yes

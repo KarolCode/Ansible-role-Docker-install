@@ -1,0 +1,32 @@
+---
+
+- name: Add Docker GPG key.
+  become: yes
+  rpm_key:
+    key: "{{ docker_install_package_docker_repo_key }}"
+    state: present
+
+- name: Add Docker repository.
+  become: yes
+  get_url:
+    url: "{{ docker_install_package_docker_repo_url }}"
+    dest: '/etc/yum.repos.d/docker-{{ docker_install_package_docker_edition }}.repo'
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Configure Docker Edge repo.
+  become: yes
+  ini_file:
+    dest: '/etc/yum.repos.d/docker-{{ docker_install_package_docker_edition }}.repo'
+    section: 'docker-{{ docker_install_package_docker_edition }}-edge'
+    option: enabled
+    value: '{{ docker_install_yum_repo_enable_edge }}'
+
+- name: Configure Docker Test repo.
+  become: yes
+  ini_file:
+    dest: '/etc/yum.repos.d/docker-{{ docker_install_package_docker_edition }}.repo'
+    section: 'docker-{{ docker_install_package_docker_edition }}-test'
+    option: enabled
+    value: '{{ docker_install_yum_repo_enable_test }}'

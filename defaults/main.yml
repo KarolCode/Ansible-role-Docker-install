@@ -1,0 +1,15 @@
+---
+
+apt_cache_valid_time: 86400
+
+# Docker
+docker_install_package_docker: docker
+docker_install_package_docker_demon: docker
+docker_install_package_docker_edition: 'ce'
+docker_install_package_docker_install: "docker-{{ docker_install_package_docker_edition }}"
+
+# Docker compose
+docker_install_package_docker_compose_install: false
+docker_install_package_docker_compose_version: "1.17.0"
+docker_install_package_docker_compose_url: "https://github.com/docker/compose/releases/download/{{ docker_package_docker_compose_version }}/docker-compose-Linux-x86_64"
+docker_install_package_docker_compose_path: /usr/local/bin/docker-compose

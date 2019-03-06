@@ -1,0 +1,8 @@
+---
+
+- include: include/init.yml
+
+- name: Ensure Docker is disabled at boot.
+  service:
+    name: "{{ demon_name }}"
+    enabled: false
