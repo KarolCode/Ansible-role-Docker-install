@@ -2,11 +2,8 @@
 
 - include: includes/init.yml
 
-- include: includes/families/Debian.yml
-  when: ansible_os_family == "Debian"
-
-- include: includes/families/RedHat.yml
-  when: ansible_os_family == "RedHat"
+- name: The procedures for the appropriate distribution family have been loaded.
+  include: "includes/families/{{ ansible_os_family }}.yml"
 
 - name: Install Docker.
   become: yes
@@ -21,4 +18,4 @@
     enabled: yes
 
 - include: includes/install_docker_compose.yml
-  when: docker_install_package_docker_compose_install
+  when: docker_install_package_docker_compose_install|bool

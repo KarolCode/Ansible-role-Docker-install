@@ -18,8 +18,13 @@ The use of the role of ansible is the installation of Docker containerization so
         name: docker_install
       tags:
         - docker_install
+        - only_install
 
 ```
+
+## varible sterowalne
+
+`docker_install_package_docker_compose_install`
 
 ## Multi Linux distribution:
 
